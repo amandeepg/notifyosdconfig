@@ -8,10 +8,14 @@
 #include "aboutw.h"
 #include "ui_aboutw.h"
 #include <QDesktopWidget>
+#include <QtGui>
+
+
 
 using namespace std;
 
 string clean (string s);
+void readThemes();
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,17 +33,28 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->bodyColour->insertColor(QColor(234, 234, 234),"Light Grey",0);
     ui->bodyColour->setCurrentColor(QColor(234, 234, 234));
 
+    readThemes();
+
     ifstream nf;
     string s1 = getenv ("HOME");
-    string s2 = "/testqt.txt";
+    string s2 = "/.notify-osd";
     string s;
 
-    nf.open ((s1+s2).c_str());
+    nf.open ((s1+s2).c_str());    
 
-    if (!nf)return;
+    ui->statusBar->showMessage("Loading configuration file",3000);
+
+    if (!nf) {
+        ui->statusBar->showMessage("No configuration file to load",3000);
+        return;
+    }
+    ui->statusBar->showMessage("",3000);
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     if (s=="dynamic") {
         ui->positionCombo->setCurrentIndex(1);
@@ -48,63 +63,99 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->timeoutSpin->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bblVerticalGap->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bblHorizontalGap->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bblCornerRadius->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bblIconSize->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bblGaugeSize->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bblWidth->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     QColor qc = QColor(("#"+s).c_str());
     ui->bblBackColour->setCurrentColor(qc);
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bblOpacity->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->marginSize->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->titleSize->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     if (s=="normal"){
         ui->titleWeight->setCurrentIndex(1);
@@ -115,23 +166,35 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     QColor qc2 = QColor(("#"+s).c_str());
     ui->titleColour->setCurrentColor(qc2);
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->titleOpacity->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bodySize->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     if (s=="normal"){
         ui->bodyWeight->setCurrentIndex(1);
@@ -142,20 +205,39 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     QColor qc3 = QColor(("#"+s).c_str());
     ui->bodyColour->setCurrentColor(qc3);
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->titleOpacity->setValue(atoi(s.c_str()));
 
     getline(nf,s);
-    if (s=="")return;
+    if (s=="") {
+        ui->statusBar->showMessage("Configuration file incomplete",3000);
+        return;
+    }
     s = clean(s);
     ui->bodySize->setValue(atoi(s.c_str()));
+
+    ui->statusBar->showMessage("Loaded configuration file",3000);
+}
+
+
+
+
+void readThemes(){
+
+
 
 }
 
@@ -220,7 +302,7 @@ void MainWindow::on_applyBut_clicked()
 {
       ofstream nf;
       string s1 = getenv ("HOME");
-      string s2 = "/testqt.txt";
+      string s2 = "/.notify-osd";
 
       nf.open ((s1+s2).c_str());
 
@@ -269,7 +351,7 @@ void MainWindow::on_applyBut_clicked()
       nf.close();
 
       system ("killall notify-osd");
-      system ("notify-send -u critical \"Notify OSD Configuration\" \"This is how the notifications now look.\"");
+      system (("notify-send -u critical -i "+s1+"/.notifyosdconf/not.png \"Notify OSD Configuration\" \"This is how the notifications now look.\"").c_str());
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -295,6 +377,7 @@ void MainWindow::on_actionAbout_triggered()
 
     window->move((desk.width() - window->frameGeometry().width()) / 2,
           (desk.height() - window->frameGeometry().height()) / 2);
-
 }
+    void MainWindow::on_actionAbout_Qt_triggered()
+    {  QMessageBox::aboutQt(0, "About QT"); }
 

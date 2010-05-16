@@ -37,6 +37,10 @@
     </item>
     <item row="0" column="1">
      <widget class="QComboBox" name="positionCombo">
+      <property name="toolTip">
+       <string>Dynamic: Default in Ubuntu 9.04
+Fixed: Default in Ubuntu 9.10+</string>
+      </property>
       <item>
        <property name="text">
         <string>Fixed</string>
@@ -61,6 +65,9 @@
     </item>
     <item row="1" column="1">
      <widget class="QSpinBox" name="timeoutSpin">
+      <property name="toolTip">
+       <string>Time the pop-up message will show for</string>
+      </property>
       <property name="accelerated">
        <bool>true</bool>
       </property>
@@ -109,6 +116,9 @@
        </item>
        <item row="6" column="2">
         <widget class="QSpinBox" name="bblVerticalGap">
+         <property name="toolTip">
+          <string>Vertical spacing between the pop-up messages</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -125,6 +135,9 @@
        </item>
        <item row="7" column="2">
         <widget class="QSpinBox" name="bblHorizontalGap">
+         <property name="toolTip">
+          <string>Horizontal spacing between the message and the right edge of the screen</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -151,6 +164,9 @@
        </item>
        <item row="8" column="2">
         <widget class="QSpinBox" name="bblCornerRadius">
+         <property name="toolTip">
+          <string>Radius of the rounded corner of the message</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -177,6 +193,9 @@
        </item>
        <item row="9" column="2">
         <widget class="QSpinBox" name="bblIconSize">
+         <property name="toolTip">
+          <string>Size of icon in message</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -203,14 +222,20 @@
        </item>
        <item row="10" column="2">
         <widget class="QSpinBox" name="bblGaugeSize">
+         <property name="toolTip">
+          <string>Height of the scale of the volume, brightness, etc.</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
          <property name="suffix">
           <string> px</string>
          </property>
+         <property name="minimum">
+          <number>5</number>
+         </property>
          <property name="maximum">
-          <number>1000</number>
+          <number>10</number>
          </property>
          <property name="value">
           <number>6</number>
@@ -229,6 +254,9 @@
        </item>
        <item row="11" column="2">
         <widget class="QSpinBox" name="bblWidth">
+         <property name="toolTip">
+          <string>Width of message</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -255,6 +283,9 @@
        </item>
        <item row="12" column="2">
         <widget class="QtColorPicker" name="bblBackColour">
+         <property name="toolTip">
+          <string>Colour of the background of the message</string>
+         </property>
          <property name="checkable">
           <bool>true</bool>
          </property>
@@ -272,6 +303,9 @@
        </item>
        <item row="13" column="2">
         <widget class="QSpinBox" name="bblOpacity">
+         <property name="toolTip">
+          <string>Transparency of the message bubble (when not hovered upon)</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -307,6 +341,9 @@
        </item>
        <item row="0" column="1">
         <widget class="QSpinBox" name="marginSize">
+         <property name="toolTip">
+          <string>Size of padding between text and borders of bubble</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -333,6 +370,9 @@
        </item>
        <item row="1" column="1">
         <widget class="QSpinBox" name="titleSize">
+         <property name="toolTip">
+          <string>Size of title text, as a percentage of application text size</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -359,6 +399,9 @@
        </item>
        <item row="3" column="1">
         <widget class="QComboBox" name="titleWeight">
+         <property name="toolTip">
+          <string>Thickness of title text</string>
+         </property>
          <item>
           <property name="text">
            <string>Bold</string>
@@ -397,10 +440,17 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QtColorPicker" name="titleColour"/>
+        <widget class="QtColorPicker" name="titleColour">
+         <property name="toolTip">
+          <string>Colour of title text</string>
+         </property>
+        </widget>
        </item>
        <item row="5" column="1">
         <widget class="QSpinBox" name="titleOpacity">
+         <property name="toolTip">
+          <string>Transparancy of title text</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -456,6 +506,9 @@
        </item>
        <item row="0" column="1">
         <widget class="QSpinBox" name="bodySize">
+         <property name="toolTip">
+          <string>Size of body text, as a percentage of application text size</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -472,6 +525,9 @@
        </item>
        <item row="1" column="1">
         <widget class="QComboBox" name="bodyWeight">
+         <property name="toolTip">
+          <string>Thickness of body text</string>
+         </property>
          <property name="currentIndex">
           <number>1</number>
          </property>
@@ -493,7 +549,11 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QtColorPicker" name="bodyColour"/>
+        <widget class="QtColorPicker" name="bodyColour">
+         <property name="toolTip">
+          <string>Colour of body text</string>
+         </property>
+        </widget>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_19">
@@ -517,6 +577,9 @@
        </item>
        <item row="3" column="1">
         <widget class="QSpinBox" name="bodyOpacity">
+         <property name="toolTip">
+          <string>Transparancy of body text</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -533,6 +596,9 @@
        </item>
        <item row="4" column="1">
         <widget class="QSpinBox" name="shadowOpacity">
+         <property name="toolTip">
+          <string>Transparancy of shadow</string>
+         </property>
          <property name="accelerated">
           <bool>true</bool>
          </property>
@@ -567,6 +633,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="applyBut">
+        <property name="toolTip">
+         <string>Save the changes</string>
+        </property>
         <property name="text">
          <string>Apply</string>
         </property>
@@ -589,6 +658,9 @@
     <property name="title">
      <string>FIle</string>
     </property>
+    <addaction name="actionThemes"/>
+    <addaction name="actionSave_Theme"/>
+    <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -596,6 +668,7 @@
      <string>Help</string>
     </property>
     <addaction name="actionAbout"/>
+    <addaction name="actionAbout_Qt"/>
    </widget>
    <addaction name="menuFIle"/>
    <addaction name="menuHelp"/>
@@ -619,6 +692,26 @@
   <action name="actionAbout">
    <property name="text">
     <string>About...</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt ...</string>
+   </property>
+  </action>
+  <action name="actionThemes">
+   <property name="text">
+    <string>Load Theme ...</string>
+   </property>
+  </action>
+  <action name="actionSave_Theme">
+   <property name="text">
+    <string>Save Theme ...</string>
+   </property>
+  </action>
+  <action name="actionSave_Theme_As">
+   <property name="text">
+    <string>Save Theme As ...</string>
    </property>
   </action>
  </widget>

@@ -28,6 +28,9 @@ private slots:
 
 private slots:
           void on_actionAbout_triggered();
+
+private slots:
+          void on_actionAbout_Qt_triggered();
 };
 
 
