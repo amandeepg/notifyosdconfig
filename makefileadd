@@ -1,0 +1,10 @@
+install:
+	$(MKDIR) $(HOME)/.notifyosdconf/
+	chmod -R 777 $(HOME)/.notifyosdconf/
+	$(INSTALL_FILE) not.png $(HOME)/.notifyosdconf/not.png
+	$(INSTALL_FILE) default.def $(HOME)/.notifyosdconf/default.def
+	$(INSTALL_PROGRAM) NotifyOSDConfiguration /usr/bin/notifyconf
+
+uninstall:
+	rm -r $(HOME)/.notifyosdconf/
+	$(DEL_FILE) /usr/bin/notifyconf
