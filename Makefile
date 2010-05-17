@@ -270,10 +270,20 @@ install:
 	$(INSTALL_FILE) not.png $(HOME)/.notifyosdconf/not.png
 	$(INSTALL_FILE) default.def $(HOME)/.notifyosdconf/default.def
 	$(INSTALL_PROGRAM) NotifyOSDConfiguration /usr/bin/notifyconf
+	echo "[Desktop Entry]" > /usr/share/applications/notifyconf.desktop
+	echo "Encoding=UTF-8" >> /usr/share/applications/notifyconf.desktop
+	echo "Version=1.0" >> /usr/share/applications/notifyconf.desktop
+	echo "Type=Application" >> /usr/share/applications/notifyconf.desktop
+	echo "Name=NotifyOSD Configuration" >> /usr/share/applications/notifyconf.desktop
+	echo "Comment=Tool to configure Ubuntu's notify-osd notification system" >> /usr/share/applications/notifyconf.desktop
+	echo "Categories=GNOME;Applications;Utility;Qt" >> /usr/share/applications/notifyconf.desktop
+	echo "Exec=notifyconf" >> /usr/share/applications/notifyconf.desktop
+	echo "Icon=$(HOME)/.notifyosdconf/not.png" >> /usr/share/applications/notifyconf.desktop
 
 uninstall:
 	rm -r $(HOME)/.notifyosdconf/
 	$(DEL_FILE) /usr/bin/notifyconf
+	$(DEL_FILE) /usr/share/applications/notifyconf.desktop
 
 FORCE:
 
