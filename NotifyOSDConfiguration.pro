@@ -10,6 +10,6 @@ HEADERS += mainwindow.h \
     aboutw.h
 FORMS += mainwindow.ui \
     aboutw.ui
-include(/home/tml/Downloads/qtcolorpicker-2.6_1-opensource/src/qtcolorpicker.pri)
+include(qtcolorpicker-2.6_1-opensource/src/qtcolorpicker.pri)
 OTHER_FILES += 
 RESOURCES += res.qrc

@@ -13,6 +13,9 @@ public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
 void closeEvent(QCloseEvent *event);
+void readThemes();
+void loadTheme (std::string s);
+void saveTheme(std::string s);
 
 protected:
     void changeEvent(QEvent *e);
@@ -22,15 +25,15 @@ private:
 
 private slots:
        void on_applyBut_clicked();
-
-private slots:
-          void on_actionQuit_triggered();
-
-private slots:
-          void on_actionAbout_triggered();
-
-private slots:
-          void on_actionAbout_Qt_triggered();
+       void doS();
+       void saveT();
+       void on_actionQuit_triggered();
+       void on_actionReset_triggered();
+       void on_actionAbout_triggered();
+       void on_actionAbout_Qt_triggered();
+       void dragEnterEvent(QDragEnterEvent *event);
+       void dropEvent(QDropEvent *event);
+       void saveNewTheme();
 };
 
 

@@ -16,11 +16,14 @@
     <height>837</height>
    </size>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>Notify OSD Configuration</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res.qrc">
+   <iconset>
     <normaloff>:/not.png</normaloff>:/not.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -513,10 +516,10 @@ Fixed: Default in Ubuntu 9.10+</string>
           <bool>true</bool>
          </property>
          <property name="suffix">
-          <string> px</string>
+          <string> %</string>
          </property>
          <property name="maximum">
-          <number>1000</number>
+          <number>100</number>
          </property>
          <property name="value">
           <number>90</number>
@@ -658,8 +661,19 @@ Fixed: Default in Ubuntu 9.10+</string>
     <property name="title">
      <string>FIle</string>
     </property>
-    <addaction name="actionThemes"/>
-    <addaction name="actionSave_Theme"/>
+    <widget class="QMenu" name="menuLoad_Theme">
+     <property name="title">
+      <string>Load Theme ...</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuSave_Theme">
+     <property name="title">
+      <string>Save Theme ...</string>
+     </property>
+    </widget>
+    <addaction name="menuLoad_Theme"/>
+    <addaction name="menuSave_Theme"/>
+    <addaction name="actionReset"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
@@ -699,19 +713,24 @@ Fixed: Default in Ubuntu 9.10+</string>
     <string>About Qt ...</string>
    </property>
   </action>
-  <action name="actionThemes">
-   <property name="text">
-    <string>Load Theme ...</string>
-   </property>
-  </action>
-  <action name="actionSave_Theme">
-   <property name="text">
-    <string>Save Theme ...</string>
-   </property>
-  </action>
   <action name="actionSave_Theme_As">
    <property name="text">
     <string>Save Theme As ...</string>
+   </property>
+  </action>
+  <action name="action1">
+   <property name="text">
+    <string>1</string>
+   </property>
+  </action>
+  <action name="actionA">
+   <property name="text">
+    <string>a</string>
+   </property>
+  </action>
+  <action name="actionReset">
+   <property name="text">
+    <string>Reset</string>
    </property>
   </action>
  </widget>
@@ -723,8 +742,6 @@ Fixed: Default in Ubuntu 9.10+</string>
    <header>qtcolorpicker.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

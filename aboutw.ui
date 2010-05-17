@@ -95,7 +95,7 @@
        </font>
       </property>
       <property name="text">
-       <string>A simple too to configure Ubuntu's notify-osd notification system.</string>
+       <string>A simple tool to configure Ubuntu's notify-osd notification system.</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
