@@ -267,6 +267,7 @@ void MainWindow::saveT() {
 void MainWindow::readThemes() {
     string s1 = getenv ("HOME");
     s1 = s1 +"/.notifyosdconf/";
+    cout << system (("mkdir "+s1).c_str()) << endl;
     QDir directory = QDir(s1.c_str());
     QStringList files;
 
@@ -446,7 +447,7 @@ void MainWindow::on_applyBut_clicked() {
     saveTheme(s1+s2);
 
     cout << system ("killall notify-osd") << endl;
-    cout << system (("notify-send -u critical -i "+s1+"/.notifyosdconf/not.png \"Notify OSD Configuration\" \"This is how the notifications now look.\"").c_str()) << endl;
+    cout << system ("notify-send -u critical -i /usr/share/notifyosdconf/not.png \"Notify OSD Configuration\" \"This is how the notifications now look.\"") << endl;
 }
 
 void MainWindow::on_actionQuit_triggered() {
@@ -477,10 +478,7 @@ void MainWindow::on_actionAbout_Qt_triggered() {
 }
 
 void MainWindow::on_actionReset_triggered() {
-    string s1 = getenv ("HOME");
-    s1 = s1 +"/.notifyosdconf/";
-    string s2 = "default.def";
-    string s3 =s1+s2;
+    string s3 = "/usr/share/notifyosdconf/default.def";
     loadTheme(s3);
     ui->statusBar->showMessage("Reset to default theme",3000);
 }
@@ -512,6 +510,5 @@ void MainWindow::dropEvent(QDropEvent *event) {
     ui->statusBar->showMessage(QString(tem.c_str()) ,3000);
     readThemes();
 }
-
 
 
