@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>not.png</file>
+        <file>Qt-logo.svg</file>
     </qresource>
 </RCC>

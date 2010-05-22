@@ -1,11 +1,13 @@
 #include "aboutw.h"
 #include "ui_aboutw.h"
+#include <QtGui>
 
 AboutW::AboutW(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AboutW)
 {
     ui->setupUi(this);
+    ui->closeBut->setIcon(QMessageBox(0).addButton(QMessageBox::Ok)->icon());
 }
 
 AboutW::~AboutW()

@@ -11,9 +11,6 @@
 #include <QtGui>
 #include <sstream>
 
-
-
-
 using namespace std;
 
 string clean (string s);
@@ -34,6 +31,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->bodyColour->setStandardColors();
     ui->bodyColour->insertColor(QColor(234, 234, 234),"Light Grey",0);
     ui->bodyColour->setCurrentColor(QColor(234, 234, 234));
+
+    ui->actionQuit->setIcon(QIcon::fromTheme("application-exit"));
+    ui->menuLoad_Theme->setIcon(QIcon::fromTheme("document-open"));
+    ui->menuSave_Theme->setIcon(QIcon::fromTheme("document-save"));
+    ui->actionReset->setIcon(QIcon::fromTheme("document-revert"));
+    ui->actionAbout->setIcon(QIcon::fromTheme("help-about"));
+    ui->applyBut->setIcon(QMessageBox(0).addButton(QMessageBox::Ok)->icon());
+
+
+
 
     readThemes();
 
