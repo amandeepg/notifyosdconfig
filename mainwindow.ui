@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>576</width>
-    <height>421</height>
+    <width>548</width>
+    <height>415</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -148,21 +148,21 @@ Fixed: Default in Ubuntu 9.10+</string>
       </item>
      </layout>
     </item>
-    <item row="5" column="0">
+    <item row="12" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="enabled">
        <bool>true</bool>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
       </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
+       <property name="maximumSize">
+        <size>
+         <width>731</width>
+         <height>344</height>
+        </size>
+       </property>
        <attribute name="title">
         <string>Bubble</string>
        </attribute>
@@ -522,7 +522,7 @@ Fixed: Default in Ubuntu 9.10+</string>
              </item>
              <item>
               <property name="text">
-               <string>Thin</string>
+               <string>Light</string>
               </property>
              </item>
             </widget>
@@ -577,22 +577,6 @@ Fixed: Default in Ubuntu 9.10+</string>
          </widget>
         </item>
         <item row="0" column="2">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="1">
          <widget class="QGroupBox" name="groupBox_3">
           <property name="title">
            <string>Body</string>
@@ -667,7 +651,7 @@ Fixed: Default in Ubuntu 9.10+</string>
              </item>
              <item>
               <property name="text">
-               <string>Thin</string>
+               <string>Light</string>
               </property>
              </item>
             </widget>
@@ -740,6 +724,22 @@ Fixed: Default in Ubuntu 9.10+</string>
           </layout>
          </widget>
         </item>
+        <item row="0" column="1">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -751,8 +751,8 @@ Fixed: Default in Ubuntu 9.10+</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>576</width>
-     <height>23</height>
+     <width>548</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFIle">

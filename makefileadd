@@ -1,10 +1,9 @@
 install:
 	$(MKDIR) /usr/share/notifyosdconf/
-	chmod -R 777 /usr/share/notifyosdconf/
 	$(INSTALL_FILE) not.png /usr/share/notifyosdconf/not.png
 	$(INSTALL_FILE) default.def /usr/share/notifyosdconf/default.def
 	$(MKDIR) /usr/bin/
-	$(INSTALL_PROGRAM) NotifyOSDConfiguration /usr/bin/notifyconf
+	$(INSTALL_PROGRAM) notifyosdconf /usr/bin/notifyosdconf
 	$(MKDIR) /usr/share/applications/
 	echo "[Desktop Entry]" > /usr/share/applications/notifyconf.desktop
 	echo "Encoding=UTF-8" >> /usr/share/applications/notifyconf.desktop
@@ -13,11 +12,11 @@ install:
 	echo "Name=NotifyOSD Configuration" >> /usr/share/applications/notifyconf.desktop
 	echo "Comment=Tool to configure Ubuntu's notify-osd notification system" >> /usr/share/applications/notifyconf.desktop
 	echo "Categories=GNOME;Applications;Utility;Qt" >> /usr/share/applications/notifyconf.desktop
-	echo "Exec=notifyconf" >> /usr/share/applications/notifyconf.desktop
+	echo "Exec=notifyosdconf" >> /usr/share/applications/notifyconf.desktop
 	echo "Icon=/usr/share/notifyosdconf/not.png" >> /usr/share/applications/notifyconf.desktop
 
 uninstall:
 	rm -r $(HOME)/.notifyosdconf/
 	$(DEL_FILE) /usr/bin/notifyconf
-	rm -r /usr/share/notifyosdconf/	
+	rm -r /usr/share/notifyosdconf/
 	$(DEL_FILE) /usr/share/applications/notifyconf.desktop

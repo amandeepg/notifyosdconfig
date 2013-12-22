@@ -83,7 +83,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Notify OSD Configuration 0.1</string>
+       <string>Notify OSD Configuration 0.2</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -116,7 +116,7 @@
        </font>
       </property>
       <property name="text">
-       <string>© 2010 Amandeep Grewal &lt;amandeepgrewal@users.sourceforge.net&gt;</string>
+       <string>© 2010 Amandeep Grewal &lt;me@amandeep.ca&gt;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

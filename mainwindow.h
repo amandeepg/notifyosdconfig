@@ -25,8 +25,8 @@ private:
 
 private slots:
        void on_applyBut_clicked();
-       void doS();
-       void saveT();
+       void clickLoad();
+       void clickSave();
        void on_actionQuit_triggered();
        void on_actionReset_triggered();
        void on_actionAbout_triggered();
