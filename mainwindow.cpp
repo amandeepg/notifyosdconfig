@@ -1,24 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ui_dialog.h"
-#include <iostream>
-#include <fstream>
-#include <stdlib.h>
-#include <stdio.h>
 #include "aboutw.h"
 #include "ui_aboutw.h"
-#include <QDesktopWidget>
-#include <QtGui>
-#include <sstream>
+#include "util.h"
 
-using namespace std;
-
-#define TIMEOUT 3000
 #define HOME (string(getenv("HOME")) + "/")
 #define DEFAULT_DEF "/usr/share/notifyosdconf/default.def"
-
-std::string exec(string);
-int stringToInt(string);
 
 Ui::MainWindow *ui;
 
@@ -44,38 +32,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
   readThemes();
   loadTheme(HOME + ".notify-osd");
-  ui->locationCombo->setCurrentIndex(stringToInt(exec("gsettings get com.canonical.notify-osd gravity")) - 1);
-}
-
-std::string exec(string cmd) {
-  FILE* pipe = popen(cmd.c_str(), "r");
-  if (!pipe) return "ERROR";
-  char buffer[128];
-  std::string result = "";
-  while(!feof(pipe)) {
-    if(fgets(buffer, 128, pipe) != NULL)
-      result += buffer;
-  }
-  pclose(pipe);
-  return result;
-}
-
-int stringToInt(string s) {
-  return atoi(s.c_str());
-}
-
-int weightToIndex(string s) {
-  if (s == "normal") {
-    return 1;
-  } else if (s == "light") {
-    return 2;
-  } else {
-    return 0;
-  }
-}
-
-QColor stringToHex(string s) {
-  return QColor(("#" + s).c_str());
+  ui->locationCombo->setCurrentIndex(atoi(exec("gsettings get com.canonical.notify-osd gravity")) - 1);
 }
 
 map<string, string> loadConfigFromFile(string filename) {
@@ -96,14 +53,6 @@ map<string, string> loadConfigFromFile(string filename) {
   return config_params;
 }
 
-string orMap(map<string, string> map1, map<string, string> map2, string key) {
-  if (map1.find(key) != map1.end()) {
-    return map1[key];
-  } else {
-    return map2[key];
-  }
-}
-
 void MainWindow::loadTheme(string filename) {
   ui->statusBar->showMessage("Loading configuration file ...", TIMEOUT);
 
@@ -119,28 +68,28 @@ void MainWindow::loadTheme(string filename) {
   }
 
   ui->positionCombo->setCurrentIndex(orMap(config_params, config_params_def, "slot-allocation") == "dynamic" ? 1 : 0);
-  ui->timeoutSpin->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-expire-timeout")));
-  ui->bblVerticalGap->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-vertical-gap")));
-  ui->bblHorizontalGap->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-horizontal-gap")));
-  ui->bblCornerRadius->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-corner-radius")));
-  ui->bblIconSize->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-icon-size")));
-  ui->bblGaugeSize->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-gauge-size")));
-  ui->bblWidth->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-width")));
+  ui->timeoutSpin->setValue(atoi(orMap(config_params, config_params_def, "bubble-expire-timeout")));
+  ui->bblVerticalGap->setValue(atoi(orMap(config_params, config_params_def, "bubble-vertical-gap")));
+  ui->bblHorizontalGap->setValue(atoi(orMap(config_params, config_params_def, "bubble-horizontal-gap")));
+  ui->bblCornerRadius->setValue(atoi(orMap(config_params, config_params_def, "bubble-corner-radius")));
+  ui->bblIconSize->setValue(atoi(orMap(config_params, config_params_def, "bubble-icon-size")));
+  ui->bblGaugeSize->setValue(atoi(orMap(config_params, config_params_def, "bubble-gauge-size")));
+  ui->bblWidth->setValue(atoi(orMap(config_params, config_params_def, "bubble-width")));
   ui->bblBackColour->setCurrentColor(stringToHex(orMap(config_params, config_params_def, "bubble-background-color")));
-  ui->bblOpacity->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-background-opacity")));
-  ui->marginSize->setValue(stringToInt(orMap(config_params, config_params_def, "text-margin-size")));
-  ui->titleSize->setValue(stringToInt(orMap(config_params, config_params_def, "text-title-size")));
+  ui->bblOpacity->setValue(atoi(orMap(config_params, config_params_def, "bubble-background-opacity")));
+  ui->marginSize->setValue(atoi(orMap(config_params, config_params_def, "text-margin-size")));
+  ui->titleSize->setValue(atoi(orMap(config_params, config_params_def, "text-title-size")));
   ui->titleWeight->setCurrentIndex(weightToIndex(orMap(config_params, config_params_def, "text-title-weight")));
   ui->titleColour->setCurrentColor(stringToHex(orMap(config_params, config_params_def, "text-title-color")));
-  ui->bodySize->setValue(stringToInt(orMap(config_params, config_params_def, "text-body-size")));
+  ui->bodySize->setValue(atoi(orMap(config_params, config_params_def, "text-body-size")));
   ui->bodyWeight->setCurrentIndex(weightToIndex(orMap(config_params, config_params_def, "text-body-weight")));
   ui->titleColour->setCurrentColor(stringToHex(orMap(config_params, config_params_def, "text-body-color")));
-  ui->bodyOpacity->setValue(stringToInt(orMap(config_params, config_params_def, "text-body-opacity")));
-  ui->shadowOpacity->setValue(stringToInt(orMap(config_params, config_params_def, "text-shadow-opacity")));
-  ui->locationCombo->setCurrentIndex(stringToInt(orMap(config_params, config_params_def, "location")) - 1);
-  ui->fadeOnHoverCb->setChecked(stringToInt(orMap(config_params, config_params_def, "bubble-prevent-fade")) == 1);
-  ui->closeOnClickCb->setChecked(stringToInt(orMap(config_params, config_params_def, "bubble-close-on-click")) == 1);
-  ui->bblBackDashCb->setChecked(stringToInt(orMap(config_params, config_params_def, "bubble-as-desktop-bg")) == 1);
+  ui->bodyOpacity->setValue(atoi(orMap(config_params, config_params_def, "text-body-opacity")));
+  ui->shadowOpacity->setValue(atoi(orMap(config_params, config_params_def, "text-shadow-opacity")));
+  ui->locationCombo->setCurrentIndex(atoi(orMap(config_params, config_params_def, "location")) - 1);
+  ui->fadeOnHoverCb->setChecked(atoi(orMap(config_params, config_params_def, "bubble-prevent-fade")) == 1);
+  ui->closeOnClickCb->setChecked(atoi(orMap(config_params, config_params_def, "bubble-close-on-click")) == 1);
+  ui->bblBackDashCb->setChecked(atoi(orMap(config_params, config_params_def, "bubble-as-desktop-bg")) == 1);
 
   ui->statusBar->showMessage("Loaded configuration file", TIMEOUT);
 }
@@ -204,12 +153,6 @@ void MainWindow::changeEvent(QEvent *e) {
   }
 }
 
-string itos(int i) { // convert int to string
-  stringstream s;
-  s << i;
-  return s.str();
-}
-
 void MainWindow::saveNewTheme() {
   bool ok;
   srand(time(NULL));
@@ -226,10 +169,6 @@ void MainWindow::saveNewTheme() {
   } else {
     ui->statusBar->showMessage("No new theme file saved", TIMEOUT);
   }
-}
-
-string normalizeString(QString s) {
-  return s.toLower().remove("#").remove(" ").toStdString();
 }
 
 void MainWindow::saveTheme(string s) {
