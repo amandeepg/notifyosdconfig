@@ -1,0 +1,11 @@
+notifyosdconf (0.3) saucy; urgency=low
+
+  * Support new features in patched notify-osd.
+
+ -- Amandeep Grewal <me@amandeep.ca>  Fri, 27 Dec 2013 20:33:00 -0500
+
+notifyosdconf (0.1) lucid; urgency=low
+
+  * Initial release.
+
+ -- Amandeep Grewal <me@amandeep.ca>  Sat May 22 2010 00:16:40 -0400
