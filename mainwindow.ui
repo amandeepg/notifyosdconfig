@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
-    <height>415</height>
+    <width>596</width>
+    <height>347</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -21,8 +21,8 @@
     <normaloff>:/not.png</normaloff>:/not.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0">
-    <item row="17" column="0" colspan="2">
+   <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+    <item row="16" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <spacer name="horizontalSpacer">
@@ -49,380 +49,418 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="0" rowspan="3">
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Positioning</string>
-        </property>
-        <property name="buddy">
-         <cstring>positionCombo</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QComboBox" name="positionCombo">
-        <property name="minimumSize">
-         <size>
-          <width>135</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>Dynamic: Default in Ubuntu 9.04
-Fixed: Default in Ubuntu 9.10+</string>
-        </property>
-        <item>
-         <property name="text">
-          <string>Fixed</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Dynamic</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Timeout</string>
-        </property>
-        <property name="buddy">
-         <cstring>timeoutSpin</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QSpinBox" name="timeoutSpin">
-        <property name="toolTip">
-         <string>Time the pop-up message will show for</string>
-        </property>
-        <property name="accelerated">
-         <bool>true</bool>
-        </property>
-        <property name="suffix">
-         <string> sec</string>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-        <property name="value">
-         <number>10</number>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::MinimumExpanding</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>200</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="1">
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Minimum</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </item>
     <item row="12" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="enabled">
        <bool>true</bool>
       </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::PreventContextMenu</enum>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Behaviour</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>Location</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Positioning</string>
+            </property>
+            <property name="buddy">
+             <cstring>positionCombo</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="positionCombo">
+            <property name="minimumSize">
+             <size>
+              <width>135</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Dynamic: Default in Ubuntu 9.04
+Fixed: Default in Ubuntu 9.10+</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Fixed</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Dynamic</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Timeout</string>
+            </property>
+            <property name="buddy">
+             <cstring>timeoutSpin</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QCheckBox" name="closeOnClickCb">
+            <property name="text">
+             <string>Close on Click</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="timeoutSpin">
+            <property name="toolTip">
+             <string>Time the pop-up message will show for</string>
+            </property>
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string> sec</string>
+            </property>
+            <property name="maximum">
+             <number>10</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="locationCombo">
+            <item>
+             <property name="text">
+              <string>Top Right</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Middle Right</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Bottom Right</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Bottom Left</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Middle Left</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Top Left</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QCheckBox" name="fadeOnHoverCb">
+            <property name="text">
+             <string>Fade on Hover</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="tab">
-       <property name="maximumSize">
-        <size>
-         <width>731</width>
-         <height>344</height>
-        </size>
-       </property>
        <attribute name="title">
         <string>Bubble</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="0">
-         <widget class="QGroupBox" name="groupBox">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="title">
-           <string>Bubble</string>
-          </property>
-          <property name="checkable">
-           <bool>false</bool>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_2">
-           <item row="6" column="1">
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>Vertical Gap</string>
-             </property>
-             <property name="buddy">
-              <cstring>bblVerticalGap</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLabel" name="label_3">
-             <property name="text">
-              <string>Horizontal Gap</string>
-             </property>
-             <property name="buddy">
-              <cstring>bblHorizontalGap</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QSpinBox" name="bblVerticalGap">
-             <property name="toolTip">
-              <string>Vertical spacing between the pop-up messages</string>
-             </property>
-             <property name="accelerated">
-              <bool>true</bool>
-             </property>
-             <property name="suffix">
-              <string> px</string>
-             </property>
-             <property name="maximum">
-              <number>1000</number>
-             </property>
-             <property name="value">
-              <number>5</number>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="2">
-            <widget class="QSpinBox" name="bblHorizontalGap">
-             <property name="toolTip">
-              <string>Horizontal spacing between the message and the right edge of the screen</string>
-             </property>
-             <property name="accelerated">
-              <bool>true</bool>
-             </property>
-             <property name="suffix">
-              <string> px</string>
-             </property>
-             <property name="maximum">
-              <number>1000</number>
-             </property>
-             <property name="value">
-              <number>5</number>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="5">
-            <widget class="QSpinBox" name="bblIconSize">
-             <property name="toolTip">
-              <string>Size of icon in message</string>
-             </property>
-             <property name="accelerated">
-              <bool>true</bool>
-             </property>
-             <property name="suffix">
-              <string> px</string>
-             </property>
-             <property name="maximum">
-              <number>1000</number>
-             </property>
-             <property name="value">
-              <number>30</number>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="4">
-            <widget class="QLabel" name="label_6">
-             <property name="text">
-              <string>Icon Size</string>
-             </property>
-             <property name="buddy">
-              <cstring>bblIconSize</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="4">
-            <widget class="QLabel" name="label_7">
-             <property name="text">
-              <string>Gauge Size</string>
-             </property>
-             <property name="buddy">
-              <cstring>bblGaugeSize</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="5">
-            <widget class="QSpinBox" name="bblGaugeSize">
-             <property name="toolTip">
-              <string>Height of the scale of the volume, brightness, etc.</string>
-             </property>
-             <property name="accelerated">
-              <bool>true</bool>
-             </property>
-             <property name="suffix">
-              <string> px</string>
-             </property>
-             <property name="minimum">
-              <number>5</number>
-             </property>
-             <property name="maximum">
-              <number>10</number>
-             </property>
-             <property name="value">
-              <number>6</number>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="4">
-            <widget class="QLabel" name="label_8">
-             <property name="text">
-              <string>Width</string>
-             </property>
-             <property name="buddy">
-              <cstring>bblWidth</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="5">
-            <widget class="QSpinBox" name="bblWidth">
-             <property name="toolTip">
-              <string>Width of message</string>
-             </property>
-             <property name="accelerated">
-              <bool>true</bool>
-             </property>
-             <property name="suffix">
-              <string> px</string>
-             </property>
-             <property name="maximum">
-              <number>3000</number>
-             </property>
-             <property name="value">
-              <number>240</number>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="5">
-            <widget class="QSpinBox" name="bblCornerRadius">
-             <property name="toolTip">
-              <string>Radius of the rounded corner of the message</string>
-             </property>
-             <property name="accelerated">
-              <bool>true</bool>
-             </property>
-             <property name="suffix">
-              <string> px</string>
-             </property>
-             <property name="maximum">
-              <number>1000</number>
-             </property>
-             <property name="value">
-              <number>37</number>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="4">
-            <widget class="QLabel" name="label_4">
-             <property name="text">
-              <string>Corner Radius</string>
-             </property>
-             <property name="buddy">
-              <cstring>bblCornerRadius</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>Background Colour</string>
-             </property>
-             <property name="buddy">
-              <cstring>bblBackColour</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="1">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string>Background Opacity</string>
-             </property>
-             <property name="buddy">
-              <cstring>bblOpacity</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="2">
-            <widget class="QtColorPicker" name="bblBackColour">
-             <property name="toolTip">
-              <string>Colour of the background of the message</string>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="2">
-            <widget class="QSpinBox" name="bblOpacity">
-             <property name="toolTip">
-              <string>Transparency of the message bubble (when not hovered upon)</string>
-             </property>
-             <property name="accelerated">
-              <bool>true</bool>
-             </property>
-             <property name="suffix">
-              <string>%</string>
-             </property>
-             <property name="maximum">
-              <number>100</number>
-             </property>
-             <property name="value">
-              <number>90</number>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="3">
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Preferred</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="4" column="3">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Gauge Size</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Vertical Gap</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Background Colour</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="3">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Corner Radius</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="3">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Width</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="bblVerticalGap">
+            <property name="toolTip">
+             <string>Vertical spacing between the pop-up messages</string>
+            </property>
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string> px</string>
+            </property>
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+            <property name="value">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Horizontal Gap</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="3">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Icon Size</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QSpinBox" name="bblHorizontalGap">
+            <property name="toolTip">
+             <string>Horizontal spacing between the message and the right edge of the screen</string>
+            </property>
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string> px</string>
+            </property>
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+            <property name="value">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="4">
+           <widget class="QSpinBox" name="bblIconSize">
+            <property name="toolTip">
+             <string>Size of icon in message</string>
+            </property>
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string> px</string>
+            </property>
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+            <property name="value">
+             <number>30</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="4">
+           <widget class="QSpinBox" name="bblGaugeSize">
+            <property name="toolTip">
+             <string>Height of the scale of the volume, brightness, etc.</string>
+            </property>
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string> px</string>
+            </property>
+            <property name="minimum">
+             <number>5</number>
+            </property>
+            <property name="maximum">
+             <number>10</number>
+            </property>
+            <property name="value">
+             <number>6</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="4">
+           <widget class="QSpinBox" name="bblWidth">
+            <property name="toolTip">
+             <string>Width of message</string>
+            </property>
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string> px</string>
+            </property>
+            <property name="maximum">
+             <number>3000</number>
+            </property>
+            <property name="value">
+             <number>240</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="4">
+           <widget class="QSpinBox" name="bblCornerRadius">
+            <property name="toolTip">
+             <string>Radius of the rounded corner of the message</string>
+            </property>
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string> px</string>
+            </property>
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+            <property name="value">
+             <number>37</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QtColorPicker" name="bblBackColour">
+              <property name="toolTip">
+               <string>Colour of the background of the message</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="bblBackDashCb">
+              <property name="text">
+               <string>Use Unity Dash colour</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Background Opacity</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QSpinBox" name="bblOpacity">
+            <property name="toolTip">
+             <string>Transparency of the message bubble (when not hovered upon)</string>
+            </property>
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string>%</string>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>90</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="5">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="2">
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>25</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -724,7 +762,7 @@ Fixed: Default in Ubuntu 9.10+</string>
           </layout>
          </widget>
         </item>
-        <item row="0" column="1">
+        <item row="0" column="3">
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -751,7 +789,7 @@ Fixed: Default in Ubuntu 9.10+</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>548</width>
+     <width>596</width>
      <height>25</height>
     </rect>
    </property>

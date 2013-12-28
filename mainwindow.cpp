@@ -103,6 +103,10 @@ void MainWindow::loadTheme(string s) {
   ui->titleColour->setCurrentColor(stringToHex(config_params["text-body-color"]));
   ui->bodyOpacity->setValue(stringToInt(config_params["text-body-opacity"]));
   ui->shadowOpacity->setValue(stringToInt(config_params["text-shadow-opacity"]));
+  ui->locationCombo->setCurrentIndex(stringToInt(config_params["location"]) - 1);
+  ui->fadeOnHoverCb->setChecked(stringToInt(config_params["bubble-prevent-fade"]) == 1);
+  ui->closeOnClickCb->setChecked(stringToInt(config_params["bubble-close-on-click"]) == 1);
+  ui->bblBackDashCb->setChecked(stringToInt(config_params["bubble-as-desktop-bg"]) == 1);
 
   ui->statusBar->showMessage("Loaded configuration file", TIMEOUT);
 }
@@ -218,6 +222,12 @@ void MainWindow::saveTheme(string s) {
   outfile << "text-body-color = "           << normalizeString(ui->bodyColour->currentColor().name())    << endl;
   outfile << "text-body-opacity = "         << normalizeString(ui->bodyOpacity->text())                  << endl;
   outfile << "text-shadow-opacity = "       << normalizeString(ui->shadowOpacity->text())                << endl;
+  outfile << "location = "                  << (ui->locationCombo->currentIndex() + 1)                   << endl;
+  outfile << "bubble-prevent-fade = "       << (ui->fadeOnHoverCb->isChecked() ? "1" : "0")              << endl;
+  outfile << "bubble-close-on-click = "     << (ui->closeOnClickCb->isChecked() ? "1" : "0")             << endl;
+  outfile << "bubble-as-desktop-bg = "      << (ui->bblBackDashCb->isChecked() ? "1" : "0")              << endl;
+
+  system(("gsettings set com.canonical.notify-osd gravity " + itos(ui->locationCombo->currentIndex() + 1)).c_str());
 
   outfile.close();
 }
