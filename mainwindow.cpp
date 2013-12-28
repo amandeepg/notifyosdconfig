@@ -15,6 +15,7 @@ using namespace std;
 
 #define TIMEOUT 3000
 #define HOME (string(getenv("HOME")) + "/")
+#define DEFAULT_DEF "/usr/share/notifyosdconf/default.def"
 
 Ui::MainWindow *ui;
 
@@ -60,17 +61,13 @@ QColor stringToHex(string s) {
   return QColor(("#" + s).c_str());
 }
 
-void MainWindow::loadTheme(string s) {
+map<string, string> loadConfigFromFile(string filename) {
   ifstream infile;
-  infile.open(s.c_str());
-
-  ui->statusBar->showMessage("Loading configuration file ...", TIMEOUT);
+  infile.open(filename.c_str());
 
   if (!infile) {
-    ui->statusBar->showMessage("No configuration file to load", TIMEOUT);
-    return;
+    return map<string, string>();
   }
-  ui->statusBar->showMessage("", TIMEOUT);
 
   map<string, string> config_params;
 
@@ -79,34 +76,58 @@ void MainWindow::loadTheme(string s) {
     config_params[k] = QString(v.c_str()).remove("px").remove("sec").toStdString();
   }
 
-  if (config_params["slot-allocation"] == "dynamic") {
+  return config_params;
+}
+
+string orMap(map<string, string> map1, map<string, string> map2, string key) {
+  if (map1.find(key) != map1.end()) {
+    return map1[key];
+  } else {
+    return map2[key];
+  }
+}
+
+void MainWindow::loadTheme(string filename) {
+  ui->statusBar->showMessage("Loading configuration file ...", TIMEOUT);
+
+  map<string, string> config_params_def;
+  if (filename != DEFAULT_DEF) {
+    config_params_def = loadConfigFromFile(DEFAULT_DEF);
+  }
+
+  map<string, string> config_params = loadConfigFromFile(filename);
+  if (config_params.empty()) {
+    return;
+  }
+
+  if (orMap(config_params, config_params_def, "slot-allocation") == "dynamic") {
     ui->positionCombo->setCurrentIndex(1);
   } else {
     ui->positionCombo->setCurrentIndex(0);
   }
 
-  ui->timeoutSpin->setValue(stringToInt(config_params["bubble-expire-timeout"]));
-  ui->bblVerticalGap->setValue(stringToInt(config_params["bubble-vertical-gap"]));
-  ui->bblHorizontalGap->setValue(stringToInt(config_params["bubble-horizontal-gap"]));
-  ui->bblCornerRadius->setValue(stringToInt(config_params["bubble-corner-radius"].substr(0, s.find(","))));
-  ui->bblIconSize->setValue(stringToInt(config_params["bubble-icon-size"]));
-  ui->bblGaugeSize->setValue(stringToInt(config_params["bubble-gauge-size"]));
-  ui->bblWidth->setValue(stringToInt(config_params["bubble-width"]));
-  ui->bblBackColour->setCurrentColor(stringToHex(config_params["bubble-background-color"]));
-  ui->bblOpacity->setValue(stringToInt(config_params["bubble-background-opacity"]));
-  ui->marginSize->setValue(stringToInt(config_params["text-margin-size"]));
-  ui->titleSize->setValue(stringToInt(config_params["text-title-size"]));
-  ui->titleWeight->setCurrentIndex(weightToIndex(config_params["text-title-weight"]));
-  ui->titleColour->setCurrentColor(stringToHex(config_params["text-title-color"]));
-  ui->bodySize->setValue(stringToInt(config_params["text-body-size"]));
-  ui->bodyWeight->setCurrentIndex(weightToIndex(config_params["text-body-weight"]));
-  ui->titleColour->setCurrentColor(stringToHex(config_params["text-body-color"]));
-  ui->bodyOpacity->setValue(stringToInt(config_params["text-body-opacity"]));
-  ui->shadowOpacity->setValue(stringToInt(config_params["text-shadow-opacity"]));
-  ui->locationCombo->setCurrentIndex(stringToInt(config_params["location"]) - 1);
-  ui->fadeOnHoverCb->setChecked(stringToInt(config_params["bubble-prevent-fade"]) == 1);
-  ui->closeOnClickCb->setChecked(stringToInt(config_params["bubble-close-on-click"]) == 1);
-  ui->bblBackDashCb->setChecked(stringToInt(config_params["bubble-as-desktop-bg"]) == 1);
+  ui->timeoutSpin->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-expire-timeout")));
+  ui->bblVerticalGap->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-vertical-gap")));
+  ui->bblHorizontalGap->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-horizontal-gap")));
+  ui->bblCornerRadius->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-corner-radius")));
+  ui->bblIconSize->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-icon-size")));
+  ui->bblGaugeSize->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-gauge-size")));
+  ui->bblWidth->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-width")));
+  ui->bblBackColour->setCurrentColor(stringToHex(orMap(config_params, config_params_def, "bubble-background-color")));
+  ui->bblOpacity->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-background-opacity")));
+  ui->marginSize->setValue(stringToInt(orMap(config_params, config_params_def, "text-margin-size")));
+  ui->titleSize->setValue(stringToInt(orMap(config_params, config_params_def, "text-title-size")));
+  ui->titleWeight->setCurrentIndex(weightToIndex(orMap(config_params, config_params_def, "text-title-weight")));
+  ui->titleColour->setCurrentColor(stringToHex(orMap(config_params, config_params_def, "text-title-color")));
+  ui->bodySize->setValue(stringToInt(orMap(config_params, config_params_def, "text-body-size")));
+  ui->bodyWeight->setCurrentIndex(weightToIndex(orMap(config_params, config_params_def, "text-body-weight")));
+  ui->titleColour->setCurrentColor(stringToHex(orMap(config_params, config_params_def, "text-body-color")));
+  ui->bodyOpacity->setValue(stringToInt(orMap(config_params, config_params_def, "text-body-opacity")));
+  ui->shadowOpacity->setValue(stringToInt(orMap(config_params, config_params_def, "text-shadow-opacity")));
+  ui->locationCombo->setCurrentIndex(stringToInt(orMap(config_params, config_params_def, "location")) - 1);
+  ui->fadeOnHoverCb->setChecked(stringToInt(orMap(config_params, config_params_def, "bubble-prevent-fade")) == 1);
+  ui->closeOnClickCb->setChecked(stringToInt(orMap(config_params, config_params_def, "bubble-close-on-click")) == 1);
+  ui->bblBackDashCb->setChecked(stringToInt(orMap(config_params, config_params_def, "bubble-as-desktop-bg")) == 1);
 
   ui->statusBar->showMessage("Loaded configuration file", TIMEOUT);
 }
@@ -266,7 +287,7 @@ void MainWindow::on_actionAbout_Qt_triggered() {
 }
 
 void MainWindow::on_actionReset_triggered() {
-  loadTheme("/usr/share/notifyosdconf/default.def");
+  loadTheme(DEFAULT_DEF);
   ui->statusBar->showMessage("Reset to default theme", TIMEOUT);
 }
 
