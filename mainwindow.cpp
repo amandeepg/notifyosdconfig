@@ -17,6 +17,9 @@ using namespace std;
 #define HOME (string(getenv("HOME")) + "/")
 #define DEFAULT_DEF "/usr/share/notifyosdconf/default.def"
 
+std::string exec(string);
+int stringToInt(string);
+
 Ui::MainWindow *ui;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -41,6 +44,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
   readThemes();
   loadTheme(HOME + ".notify-osd");
+  ui->locationCombo->setCurrentIndex(stringToInt(exec("gsettings get com.canonical.notify-osd gravity")) - 1);
+}
+
+std::string exec(string cmd) {
+  FILE* pipe = popen(cmd.c_str(), "r");
+  if (!pipe) return "ERROR";
+  char buffer[128];
+  std::string result = "";
+  while(!feof(pipe)) {
+    if(fgets(buffer, 128, pipe) != NULL)
+      result += buffer;
+  }
+  pclose(pipe);
+  return result;
 }
 
 int stringToInt(string s) {
@@ -97,6 +114,7 @@ void MainWindow::loadTheme(string filename) {
 
   map<string, string> config_params = loadConfigFromFile(filename);
   if (config_params.empty()) {
+    ui->statusBar->showMessage("Loaded configuration file", TIMEOUT);
     return;
   }
 
