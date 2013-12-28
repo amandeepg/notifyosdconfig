@@ -100,12 +100,7 @@ void MainWindow::loadTheme(string filename) {
     return;
   }
 
-  if (orMap(config_params, config_params_def, "slot-allocation") == "dynamic") {
-    ui->positionCombo->setCurrentIndex(1);
-  } else {
-    ui->positionCombo->setCurrentIndex(0);
-  }
-
+  ui->positionCombo->setCurrentIndex(orMap(config_params, config_params_def, "slot-allocation") == "dynamic" ? 1 : 0);
   ui->timeoutSpin->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-expire-timeout")));
   ui->bblVerticalGap->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-vertical-gap")));
   ui->bblHorizontalGap->setValue(stringToInt(orMap(config_params, config_params_def, "bubble-horizontal-gap")));
