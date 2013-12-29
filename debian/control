@@ -2,7 +2,7 @@ Source: notifyosdconfig
 Section: x11
 Priority: optional
 Maintainer: Amandeep Grewal <me@amandeep.ca>
-Build-Depends: debhelper (>= 8.0.0), libqt4-dev (>= 4:4.8), clang-3.4 | clang-3.3 | clang-3.2
+Build-Depends: debhelper (>= 8.0.0), libqt4-dev (>= 4:4.8)
 Standards-Version: 3.9.4
 Homepage: https://code.launchpad.net/~amandeepgrewal/notifyconf/trunk
 
