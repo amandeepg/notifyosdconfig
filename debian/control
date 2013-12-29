@@ -1,4 +1,4 @@
-Source: notifyosdconf
+Source: notifyosdconfig
 Section: x11
 Priority: optional
 Maintainer: Amandeep Grewal <me@amandeep.ca>
@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 8.0.0), libqt4-dev (>= 4:4.8), clang-3.4 | clang-3.
 Standards-Version: 3.9.4
 Homepage: https://code.launchpad.net/~amandeepgrewal/notifyconf/trunk
 
-Package: notifyosdconf
+Package: notifyosdconfig
 Architecture: any
 Depends: ${misc:Depends}, notify-osd
 Description: tool to configure Ubuntu's notify-osd notification system
