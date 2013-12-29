@@ -7,7 +7,7 @@ Standards-Version: 3.9.4
 Homepage: https://code.launchpad.net/~amandeepgrewal/notifyconf/trunk
 
 Package: notifyosdconf
-Architecture: all
+Architecture: any
 Depends: ${misc:Depends}, notify-osd
 Description: tool to configure Ubuntu's notify-osd notification system
  Customize the appearance and behaviour of Notify OSD, from an easy GUI.
