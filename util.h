@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <QDesktopWidget>
-#include <QtGui>
+#include <QtWidgets>
 
 using namespace std;
 

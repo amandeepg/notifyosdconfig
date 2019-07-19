@@ -21,3 +21,4 @@ INSTALLS += desktop_entry
 bin_app.path = /usr/bin/
 bin_app.files = notifyosdconf
 INSTALLS += bin_app
+QT += core gui widgets

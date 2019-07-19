@@ -1,6 +1,6 @@
 #include "aboutw.h"
 #include "ui_aboutw.h"
-#include <QtGui>
+#include <QtWidgets>
 
 AboutW::AboutW(QWidget *parent) : QMainWindow(parent), ui(new Ui::AboutW) {
   ui->setupUi(this);
